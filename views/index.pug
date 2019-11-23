@@ -3,48 +3,96 @@ extends layout
 block content
   h1 Equipos de futbol
   div
-    label Ingrese un equipo: 
-    input(
-      type= 'text'
-      class= 'nombreT'
+    form(
+      action = "http://localhost:3000"
     )
-    br
-    label Ingrese el pais de origen: 
-    input(
-      type= 'text'
-      class= 'pais'
-    )
-    br
-    label Ingrese el director tecnico: 
-    input(
-      type= 'text'
-      class= 'director'
-    ) 
-    br
-    label Ingrese el capitan: 
-    input(
-      type= 'text'
-      class= 'capitan'
-    )
-    br
-    label Ingrese la liga a la que pertence el equipo: 
-    input(
-      type= 'text'
-      class= 'liga'
-    )
-    hr
+      label Ingrese un equipo: 
+      input(
+        type= 'text'
+        class= 'nombreT'
+        id= 'Tname'
+        placeholder= 'Barcelona'
+      )
+      br
+      br
+      label Ingrese el pais de origen: 
+      input(
+        type= 'text'
+        class= 'pais'
+        id= 'country'
+        placeholder= 'España'
+      )
+      br
+      br
+      label Ingrese el director tecnico: 
+      input(
+        type= 'text'
+        class= 'director'
+        id= 'technical_director'
+        placeholder= 'Eduardo'
+      ) 
+      br
+      br
+      label Ingrese el capitan: 
+      input(
+        type= 'text'
+        class= 'capitan'
+        id= 'captain'
+        placeholder= 'Antonio'
+      )
+      br
+      br
+      label Ingrese la liga a la que pertence el equipo: 
+      input(
+        type= 'text'
+        class= 'liga'
+        id= 'league'
+        placeholder= 'LaLiga'
+      )
+      br
+      br
+    div  
+      input(
+        type= 'button'
+        class= 'btn'
+        id = 'submit_btn'
+        value = 'Mandar'
+      )
+      hr
   div
     section
-      table
+      table(
+        class = "tabla"
+      )
         thead
           tr
-            th Equipo
+            th(
+              scope= "col"
+            ) Equipo
             th Pais
             th Director técnico
-            th capitán
-            th liga
-          tbody(
+            th Capitán
+            th Liga
+        tbody(
             id = "table_body"
-          )  
-
-              
+          )
+      input(
+          type= 'button'
+          class= 'Ebtn'
+          id = 'Edit_btn'
+          value = 'Editar'
+        )    
+      input(
+          type= 'button'
+          class= 'Dbtn'
+          id = 'delete_btn'
+          value = 'Borrar'
+        )
+      input(
+          type= 'button'
+          class= 'Rbtn'
+          id = 'refresh_btn'
+          value = 'Actualizar'
+        )    
+  div
+                      

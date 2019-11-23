@@ -2,9 +2,54 @@
 body {
   padding: 50px;
   font-family: "Montserrat", sans-serif;
-  background-image: url("../images/soccer.jpg"); }
+  background-image: url("../images/soccer.jpg");
+  padding: 10px; }
 
 a {
   color: #00B7FF; }
+
+th {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid black;
+  border-color: black; }
+
+table {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid black;
+  border-color: black; }
+
+hr {
+  border-color: #c80000;
+  size: 5px; }
+
+.btn {
+  size: 50px;
+  color: #fdfdfd;
+  background-color: #0a0ac8; }
+
+.Dbtn {
+  margin: 10px;
+  size: 50px;
+  color: #fdfdfd;
+  background-color: #c50000; }
+
+.Ebtn {
+  margin: 10px;
+  size: 50px;
+  color: #fdfdfd;
+  background-color: #00c500; }
+
+.Rbtn {
+  margin: 10px;
+  size: 50px;
+  color: #fdfdfd;
+  background-color: #b8c500; }
+
+label {
+  color: #041a69;
+  font-size: 20px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
