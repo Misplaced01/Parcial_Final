@@ -4,10 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-
+var mongoose = require('mongoose');
+var debug = require('debug')('blog:database');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+mongoose.connect(process.env.MONGO_URI, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+  })
+  .then(() => {
+    debug("success Connected to database")
+  })
+  .catch((err) => {
+    debug(err);
+    process.exit(1);
+  });
+  
 var app = express();
 
 // view engine setup
