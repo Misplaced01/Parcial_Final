@@ -5,9 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 var mongoose = require('mongoose');
-var debug = require('debug')('blog:database');
+var debug = require('debug')('parcial_Final:database');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var teamsRouter = require('./routes/teams');
 
 mongoose.connect(process.env.MONGO_URI, {
   useCreateIndex: true,
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', teamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
