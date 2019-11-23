@@ -1,12 +1,14 @@
 var User = require('../models/user');
 var debug = require('debug')('blog:user_controller');
 
+// Search a one user y database
 module.exports.getOne = (req, res, next) => {
     debug("Search User", req.params);
     User.findOne({
             username: req.params.username
         }, "-password -login_count")
         .then((foundUser) => {
+            debug("Found User", foundUser);
             if (foundUser)
                 return res.status(200).json(foundUser);
             else
@@ -24,19 +26,29 @@ module.exports.getAll = (req, res, next) => {
     var sortProperty = req.query.sortby || "createdAt",
         sort = req.query.sort || "desc";
 
-    debug("Usert List",{size:perPage,page, sortby:sortProperty,sort});
+    debug("Usert List", {
+        size: perPage,
+        page,
+        sortby: sortProperty,
+        sort
+    });
 
     User.find({}, "-password -login_count")
         .limit(perPage)
         .skip(perPage * page)
-        .sort({ [sortProperty]: sort})
+        .sort({
+            [sortProperty]: sort
+        })
         .then((users) => {
-           return res.status(200).json(users)
+            debug("Found users", users);
+            return res.status(200).json(users)
         }).catch(err => {
             next(err);
-        })
+        });
 
 }
+
+// New User
 
 module.exports.register = (req, res, next) => {
     debug("New User", {
@@ -57,11 +69,11 @@ module.exports.register = (req, res, next) => {
                     email: req.body.email,
                     password: req.body.password /*TODO: Modificar, hacer hash del password*/
                 });
-                return newUser.save(); // Retornamos la promesa para poder concater una sola linea de then
+                return newUser.save();
             }
-        }).then(user => { // Con el usario almacenado retornamos que ha sido creado con exito
+        }).then(user => {
             return res
-                .header('Location', '/users/' + user._id)
+                .header('Location', '/users/' + user.username)
                 .status(201)
                 .json({
                     username: user.username
@@ -70,6 +82,9 @@ module.exports.register = (req, res, next) => {
             next(err);
         });
 }
+
+
+// Update user 
 
 module.exports.update = (req, res, next) => {
     debug("Update user", {

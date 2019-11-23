@@ -1,23 +1,25 @@
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var teamSchema = Schema({
-    name: {
+var UserSchema = Schema({
+    username: {
         type: String,
         required: true,
-        unique: true
+       unique:true
     },
-    country: String,
-    technical_director: String,
-    captain: {
+    first_name: String,
+    last_name: String,
+    email: {
         type: String,
+        required: true
     },
-    league: {
+    password: {
         type: String,
+        required: true
     },
     login_count: Number
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model("team", teamSchema);
+module.exports = mongoose.model("User", UserSchema);
