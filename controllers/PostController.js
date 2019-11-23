@@ -1,6 +1,6 @@
 var User = require('../models/user');
 var Post = require('../models/post');
-//var Team = require('../models/teams');
+var Team = require('../models/teams');
 var debug = require('debug')('parcial_Final:post_controller');
 
 module.exports.getOne = (req, res, next) => {
@@ -21,17 +21,17 @@ module.exports.getOne = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
     debug("Create Post");
-    User.findOne({
-            username: req.body.author
+    Team.findOne({
+            name: req.body.author
         })
-        .then(user => {
-            if (!user) {
-                throw new Error("El autor no existe");
+        .then(team => {
+            if (!team) {
+                throw new Error("El equipo no existe");
             } else {
 
                 let post = new Post({
                     title: req.body.title,
-                    author: user._id,
+                    author: team._id,
                     tags: (req.body.tags || "").split(","),
                     state: req.body.state || 'draft',
                     content: req.body.content
