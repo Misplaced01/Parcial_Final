@@ -96,7 +96,7 @@ module.exports.update = (req, res, next) => {
         ...req.body
     };
 
-    User.findOneAndUpdate({
+    Team.findOneAndUpdate({
             name: req.params.name
         }, update, {
             new: true
@@ -119,7 +119,7 @@ module.exports.delete = (req, res, next) => {
         name: req.params.name,
     });
 
-    User.findOneAndDelete({name: req.params.name})
+    Team.findOneAndDelete({name: req.params.name})
     .then((data) =>{
         if (data) res.status(200).json(data);
         else res.status(404).send();
