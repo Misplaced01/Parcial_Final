@@ -68,7 +68,7 @@ module.exports.register = (req, res, next) => {
                     country: req.body.country || "",
                     technical_director: req.body.technical_director || "",
                     captain: req.body.captain,
-                    league: req.body.league /*TODO: Modificar, hacer hash del password*/
+                    league: req.body.league
                 });
                 return newTeam.save();
             }
