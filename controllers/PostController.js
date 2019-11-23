@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var Post = require('../models/post');
-var debug = require('debug')('blog:post_controller');
+//var Team = require('../models/teams');
+var debug = require('debug')('parcial_Final:post_controller');
 
 module.exports.getOne = (req, res, next) => {
     debug("Search Post", req.params.id);

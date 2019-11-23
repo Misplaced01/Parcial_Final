@@ -1,5 +1,5 @@
 var User = require('../models/user');
-var debug = require('debug')('blog:user_controller');
+var debug = require('debug')('parcial_Final:user_controller');
 
 // Search one user in database
 module.exports.getOne = (req, res, next) => {
